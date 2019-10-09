@@ -1,3 +1,5 @@
+///Complexity O(n*n)
+
 void selectionSort(int arr[], int sizeOfArray){
     int indexOfSmallest;
     for(int i=0;i<sizeOfArray-1;i++){
