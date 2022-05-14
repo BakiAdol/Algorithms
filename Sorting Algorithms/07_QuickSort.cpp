@@ -2,19 +2,22 @@
 
 int Partition(int arr[], int l, int r)
 {
-    int i=l; 
-    int small=l;
-    while(i<=r)
+    int pivot = l;
+    int smaller = 0;
+    for(int i=pivot+1;i<=r;i++)
     {
-        if(arr[i]<arr[r])
-        {
-            swap(arr[small],arr[i]);
-            small++;
-        }
-        i++;
+        if(arr[pivot]>arr[i]) smaller++;
     }
-    swap(arr[small],arr[r]);
-    return small;
+    pivot += smaller;
+    swap(arr[l], arr[pivot]);
+    
+    while(l<pivot and pivot<r)
+    {
+        if(arr[l]<arr[pivot]) l++;
+        else if(arr[r]>arr[pivot]) r--;
+        else swap(arr[l++], arr[r--]);
+    }
+    return pivot;
 }
 
 void QuickSort(int arr[], int l, int r)
